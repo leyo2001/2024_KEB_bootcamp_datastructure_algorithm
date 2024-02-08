@@ -1,24 +1,18 @@
-from random import randint
+import random
 
-a= randint(1,100)
-counter = 7
+answer = random.randint(1, 100)
+chance = 7
 
-while(counter != 0):
-
-    print(f"남은기회: {counter}")
-    counter -= 1
-
-    b=int(input("예상숫자: "))
-
-    if(b>a):
-        print("down")
-
-    elif(b<a):
-        print("up")
-
-    else:
-        print("정답")
+while chance != 0:
+    guess = int(input("Input guess number : "))
+    if guess == answer:
+        print(f'You win. Answer is {answer}')
         break
-
+    elif guess > answer:
+        chance = chance - 1
+        print(f'{guess} is bigger. Chance left : {chance}')
+    else:
+        chance = chance - 1
+        print(f'{guess} is lower. Chance left : {chance}')
 else:
-    print("fail!")
+    print(f'You lost. Answer is {answer}')
