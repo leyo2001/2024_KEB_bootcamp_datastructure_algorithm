@@ -6,10 +6,26 @@ def print_poly(f_x) -> str:
     for i in range(len(fx)):
         coefficient = f_x[i]  # 계수
 
-        if (coefficient >= 0):
-            poly_expression += "+"
-        #poly_expression += str(coefficient) + "x^" + str(term) + " "
-        poly_expression = poly_expression + f'{coefficient}x^{term} '
+        if (coefficient > 0):
+            if(i == 0):
+                pass
+            else:
+                poly_expression += "+"
+
+        elif (coefficient < 0):
+            pass
+
+        else:
+            term -= 1
+            continue
+
+        if (term > 0):
+            # poly_expression += str(coefficient) + "x^" + str(term) + " "
+            poly_expression = poly_expression + f'{coefficient}x^{term} '
+        else:
+            poly_expression = poly_expression + f'{coefficient}'
+
+
 
         term -= 1
 
