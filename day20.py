@@ -1,18 +1,41 @@
-import random
+## 함수 선언 부분 ## 
+def print_poly(f_x) -> str:
+    term = len(f_x) - 1     # 최고차항 숫자 = 배열길이-1
+    poly_expression = "P(x) = "
 
-answer = random.randint(1, 100)
-chance = 7
+    for i in range(len(fx)):
+        coefficient = f_x[i]  # 계수
 
-while chance != 0:
-    guess = int(input("Input guess number : "))
-    if guess == answer:
-        print(f'You win. Answer is {answer}')
-        break
-    elif guess > answer:
-        chance = chance - 1
-        print(f'{guess} is bigger. Chance left : {chance}')
-    else:
-        chance = chance - 1
-        print(f'{guess} is lower. Chance left : {chance}')
-else:
-    print(f'You lost. Answer is {answer}')
+        if (coefficient >= 0):
+            poly_expression += "+"
+        #poly_expression += str(coefficient) + "x^" + str(term) + " "
+        poly_expression = poly_expression + f'{coefficient}x^{term} '
+
+        term -= 1
+
+    return poly_expression
+
+
+def calculation_Poly(x_value, f_x) -> int:
+    return_Value = 0
+    term = len(f_x) - 1  # 최고차항 숫자 = 배열길이-1
+
+    for i in range(len(fx)):
+        coefficient = f_x[i]  # 계수
+        return_Value += coefficient * x_value ** term
+        term -= 1
+
+    return return_Value
+
+
+## 전역 변수 선언 부분 ## 
+fx = [7, -4, 0, 5]  # = 7x^3 -4x^2 +0x^1 +5x^0
+
+## 메인 코드 부분 ##
+if __name__ == "__main__":
+
+    print(print_poly(fx))
+    print(calculation_Poly(int(input("X 값-->")), fx))
+
+
+
