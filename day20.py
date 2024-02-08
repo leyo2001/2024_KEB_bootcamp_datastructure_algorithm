@@ -1,10 +1,24 @@
-import mymath
-import time
+from random import randint
 
-if __name__ == "__main__":
-    n = int(input("Input n : "))
-    r = int(input("Input r : "))
-    start = time.time()
-    print(f"{n}C{r} = {mymath.nCr(n, r)}")
-    # f = int(input())
-    # print(mymath.factorial(f))
+a= randint(1,100)
+counter = 7
+
+while(counter != 0):
+
+    print(f"남은기회: {counter}")
+    counter -= 1
+
+    b=int(input("예상숫자: "))
+
+    if(b>a):
+        print("down")
+
+    elif(b<a):
+        print("up")
+
+    else:
+        print("정답")
+        break
+
+else:
+    print("fail!")
