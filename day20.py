@@ -1,54 +1,64 @@
-## 함수 선언 부분 ## 
-def print_poly(t_x, f_x) -> str:
-    poly_expression = "P(x) = "
+class Node:
+    def __init__ (self):
+        self.data = None
+        self.link = None
 
-    for i in range(len(fx)):
-        coefficient = f_x[i]
-        term = t_x[i]
+def printNodes(start):
+    current = start
+    if current == None :
+        return
+    print(current.data, end = ' ')
+    while current.link != None:
+        current = current.link
+        print(current.data, end = ' ')
+    print()
 
-        if (coefficient > 0):
-            if(i == 0):
-                pass
-            else:
-                poly_expression += "+"
+def insertNode(findData, insertData):
+    global head, current, pre
 
-        elif (coefficient < 0):
-            pass
+    node = Node()
+    node.data = insertData
 
-        else:
-            continue
+    if head.data == findData :      # 첫 번째 노드 삽입
 
-        if (term > 0):
-            # poly_expression += str(coefficient) + "x^" + str(term) + " "
-            poly_expression = poly_expression + f'{coefficient}x^{term} '
-        else:
-            poly_expression = poly_expression + f'{coefficient}'
+        node.link = head
+        head = node
+        return
 
+    current = head
+    while current.link != None :    # 중간 노드 삽입
+        pre = current
+        current = current.link
+        if current.data == findData :
+            node.link = current
+            pre.link = node
+            return
 
-    return poly_expression
-
-
-def calculation_Poly(x_value, t_x, f_x) -> int:
-    return_Value = 0
-
-    for i in range(len(fx)):
-        coefficient = f_x[i]  # 계수
-        term = t_x[i]
-        return_Value += coefficient * x_value ** term
-
-
-    return return_Value
-
-
-## 전역 변수 선언 부분 ## 
-fx = [7, -4, 0, 5]  # = 7x^3 -4x^2 +0x^1 +5x^0
-tx = [3, 2,  1,  0] # 지수
-
-## 메인 코드 부분 ##
-if __name__ == "__main__":
-
-    print(print_poly(tx ,fx))
-    print(calculation_Poly(int(input("X 값-->")), tx, fx))
+    current.link = node             # 마지막 노드 삽입
 
 
 
+
+
+
+head, current, pre = None, None, None
+dataArray = ["다현", "정연", "쯔위", "사나", "지효"]
+
+
+if __name__ == "__main__" :
+
+    node = Node()		# 첫 번째 노드
+    node.data = dataArray[0]
+    head = node
+
+
+    for data in dataArray[1:] :	# 두 번째 이후 노드
+        pre = node
+        node = Node()
+        node.data = data
+        pre.link = node
+
+
+    printNodes(head)
+    insertNode("쯔위", "윤석")
+    printNodes(head)
