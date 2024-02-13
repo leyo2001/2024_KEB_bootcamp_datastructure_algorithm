@@ -15,48 +15,32 @@ def print_node():
         current = current.link
     print()
 
-def odd_even():
-    odd_cnt , even_cnt = 0, 0
+def plus_minus():
+    plus_cnt , minus_cnt = 0, 0
     current = head
     while True:
-        if current.data % 2 == 0:
-            even_cnt += 1
+        if current.data > 0:
+            plus_cnt += 1
+            current.data *= -1
+        elif current.data <0:
+            minus_cnt += 1
+            current.data *= -1
         else:
-            odd_cnt += 1
+            pass
         if current.link == head:
             break
         current = current.link
 
-
-    if even_cnt > odd_cnt:
-        current = head
-        while True:
-            if current.data % 2 == 0:
-                current.data *= -1
-            else:
-                pass
-            if current.link == head:
-                break
-            current = current.link
+    print(f"양수--> {plus_cnt}\t 음수--> {minus_cnt}")
 
 
-    else:
-        current = head
-        while True:
-            if current.data % 2 == 0:
-                pass
-            else:
-                current.data *= -1
-            if current.link == head:
-                break
-            current = current.link
 
 
 
 if __name__ == "__main__":
     array = []
     for i in range(0,7):
-        array.append(random.randint(1,100))
+        array.append(random.randint(-100,201))
 
     node = Node()
     node.data = array[0]
@@ -71,7 +55,7 @@ if __name__ == "__main__":
         node.link = head
 
     print_node()
-    odd_even()
+    plus_minus()
     print_node()
 
 
