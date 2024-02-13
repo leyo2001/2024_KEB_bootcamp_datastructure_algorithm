@@ -4,36 +4,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
-node1 = TreeNode()
-node1.data = "화사"
 
-node2 = TreeNode()
-node2.data = "솔라"
-node1.left = node2
-
-node3 = TreeNode()
-node3.data = "문별"
-node1.right = node3
-
-node4 = TreeNode()
-node4.data = "휘인"
-node2.left = node4
-
-node5 = TreeNode()
-node5.data = "쯔위"
-node2.right = node5
-
-node6 = TreeNode()
-node6.data = "선미"
-node3.left = node6
-
-node7 = TreeNode()
-node7.data = "다현"
-node4.right = node7
-
-node8 = TreeNode()
-node8.data = "선미"
-node6.right = node8
 
 
 def preorder(node):
@@ -58,8 +29,36 @@ def postorder(node):
     print(node.data, end = " ")
 
 
-preorder(node1)
+arr = ['a','b','c','d','e']
+
+
+
+node = TreeNode()
+node.data = arr[0]
+root = node
+
+current = root
+for data in arr[1:]:
+    node = TreeNode()
+    node.data = data
+    while True:
+        if current.data > node.data:
+            if current.left == None:
+                current.left = node
+                break
+            current = current.left
+        elif current.data < node.data:
+            if current.right == None:
+                current.right = node
+                break
+            current = current.right
+        else:
+            print("현재노드와 동일한 값")
+            break
+
+
+preorder(root)
 print()
-inorder(node1)
+inorder(root)
 print()
-postorder(node1)
+postorder(root)
