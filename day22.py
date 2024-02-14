@@ -1,36 +1,21 @@
-class graph:
-    def __init__(self, size):
-        self.size = size
-        self.graph = [[0 for i in range(size)] for i in range(size)]
+graph = [
+    [0,1,0,1,0],
+    [1,0,1,1,0],
+    [0,1,0,0,1],
+    [1,1,0,0,1],
+    [0,0,1,1,0]
+]
 
-
-
-g = graph(4)
-
-g.graph[0][3] = 1
-g.graph[1][3] = 1
-g.graph[1][2] = 1
-
-g.graph[3][0] = 1
-g.graph[3][1] = 1
-g.graph[2][1] = 1
-
-for i in range(g.size):
-    print()
-    for j in range(g.size):
-        print(g.graph[i][j], end=" ")
+def dfs(g, v, visited):
+    visited[v] = True
+    print(chr(ord('A')+v), end= " ")
+    for i in range(len(graph)):
+        if g[v][i] == True and not visited[i]:
+            dfs(g, i, visited)
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+visited = [0] * len(graph)
+dfs(graph, 0, visited)
