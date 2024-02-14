@@ -1,10 +1,25 @@
+import time
+l = [0,1]
+cnt = 1
+def count(f):
+    def wrapper(n):
+        global cnt
+        r = f(n)
+        print(f"{cnt}")
+        cnt+=1
+        return r
+
+    return wrapper
+
+
+@count
 def fibo(n):
-    l = [0,1]
 
     for _ in range(n-1):
         l.append(l[len(l)-1] + l[len(l)-2])
     return l[n]
 
+@count
 def fibo_r(n):
     if n==0:
         return 0
@@ -13,11 +28,5 @@ def fibo_r(n):
 
     return fibo_r(n-1) + fibo_r(n-2)
 
-for i in range(40):
-    print(i)
-    print(fibo(i))
 
-    print(i)
-    print(fibo_r(i))
-
-
+print(fibo_r(2))
