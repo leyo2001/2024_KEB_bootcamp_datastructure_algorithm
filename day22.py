@@ -1,21 +1,23 @@
-graph = [
-    [0,1,0,1,0],
-    [1,0,1,1,0],
-    [0,1,0,0,1],
-    [1,1,0,0,1],
-    [0,0,1,1,0]
-]
+def fibo(n):
+    l = [0,1]
 
-def dfs(g, v, visited):
-    visited[v] = True
-    print(chr(ord('A')+v), end= " ")
-    for i in range(len(graph)):
-        if g[v][i] == True and not visited[i]:
-            dfs(g, i, visited)
+    for _ in range(n-1):
+        l.append(l[len(l)-1] + l[len(l)-2])
+    return l[n]
+
+def fibo_r(n):
+    if n==0:
+        return 0
+    elif n==1:
+        return 1
+
+    return fibo_r(n-1) + fibo_r(n-2)
+
+for i in range(40):
+    print(i)
+    print(fibo(i))
+
+    print(i)
+    print(fibo_r(i))
 
 
-
-
-
-visited = [0] * len(graph)
-dfs(graph, 0, visited)
