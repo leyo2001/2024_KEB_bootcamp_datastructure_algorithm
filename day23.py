@@ -1,24 +1,26 @@
-def palindrome(s):
-
-    if len(s) <= 1:
-        return True
-
-    if s[0] != s[len(s)-1]:
-        return False
-
-    return palindrome(s[1:len(s)-1])
+import tkinter as tk
 
 
-str_array = ['reaver', 'kayak', 'Borrow or rob', '주유소의 소유주', '야 너 이번주 주번이 너야', '살금 살금']
+def fibo(n):
+    l = [0, 1]
 
+    for _ in range(n - 1):
+        l.append(l[len(l) - 1] + l[len(l) - 2])
+    return l[n]
 
-for s in str_array:
-    print(f'{s} --> ',end ='')
-    s = s.lower().replace(' ', '')
-    if palindrome(s):
-        print('symmetric')
+w = tk.Tk() # create window object
+w.title("Fibonacci")
+w.geometry("250x150")
 
-    else:
-        print('asymmetric')
+# create widget
+lbl_display_fibonacci_result = tk.Label(w, text='Fibonacci by memorization')
+en_input_number = tk.Entry(w)
+btn_click = tk.Button(w, text = 'Click')
 
+# layout
+lbl_display_fibonacci_result.pack()
+en_input_number.pack(fill='x')
+btn_click.pack(fill='x')
+
+w.mainloop()
 
