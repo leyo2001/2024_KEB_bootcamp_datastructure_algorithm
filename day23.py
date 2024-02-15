@@ -1,20 +1,24 @@
-arr = [1,10,4,5,9,8,7]
+dataAry = [188, 150, 168,  162, 105, 120,  177,  50]
 
+def quick(arr):
 
+    if len(arr) <= 1:
+        return arr
 
+    pivot = arr[len(arr)//2]
 
+    left_arr, right_arr = [], []
 
-for i in range(len(arr)-1):
-    for j in range(i+1,len(arr)):
-        if arr[j] < arr[i]:
-            arr[i], arr[j] = arr[j], arr[i]
+    for i in range(len(arr)):
+        if arr[i] > pivot:
+            right_arr.append(arr[i])
 
-print(arr)
+        elif arr[i] < pivot:
+            left_arr.append(arr[i])
 
+    return quick(left_arr) + [pivot] + quick(right_arr)
 
-
-
-
+print(quick(dataAry))
 
 
 

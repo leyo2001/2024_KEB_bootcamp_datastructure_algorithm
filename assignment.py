@@ -158,9 +158,22 @@ print(head.num)
 
 
 
+#정렬기본 응용예제 11-1
 
-
-
+# scoreAry = [['선미', 88], ['초아', 99], ['화사', 71], ['영탁', 78], ['영웅', 67], ['민호', 92]]
+#
+# def sort_ary():
+#     for i in range(len(scoreAry)-1):
+#         for j in range(i+1, len(scoreAry)):
+#             if scoreAry[j][1] < scoreAry[i][1]:
+#                 scoreAry[j][1], scoreAry[i][1] = scoreAry[i][1] , scoreAry[j][1]
+#
+# def parter():
+#     for i in range(len(scoreAry)//2):
+#         print(f'{scoreAry[i][0]} : {scoreAry[len(scoreAry)-1-i][0]}')
+#
+# sort_ary()
+# parter()
 
 
 
