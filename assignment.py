@@ -1,4 +1,4 @@
-#선형리스트 응용예제1
+#선형리스트 응용예제2-1
 
 # l = [('다현',200),('정연',150),('쯔위',90),('사나',30),('지효',15)]
 #
@@ -17,7 +17,7 @@
 # print(l)
 
 
-#선형리스트 응용예제2
+#선형리스트 응용예제2-2
 
 # x = [[7,300], [-4,20], [5,0]]
 #
@@ -48,7 +48,7 @@
 # print(cal(int(input('X 값 --> '))))
 
 
-#단순 연결 리스트 응용예제1
+#단순 연결 리스트 응용예제3-1
 
 # class Node:
 #     def __init__(self):
@@ -101,60 +101,50 @@
 #     current.link = node
 #     print_node()
 
-#단순 연결 리스트 응용예제2
-from random import randint
+#단순 연결 리스트 응용예제3-2
+# from random import randint
+# class Node:
+#     def __init__(self):
+#         self.n = None
+#         self.l = None
+#
+# number = []
+#
+# while len(number) < 6:
+#     num = randint(1, 45)
+#     if num in number:
+#         continue
+#     else:
+#         number.append(num)
+#
+# for i in range(5):
+#     for j in range(i+1,6):
+#         if number[i] > number[j]:
+#             number[i], number[j] = number[j], number[i]
+#
+#
+# node = Node()
+# head = node
+# node.n = number[0]
+# current = node
+#
+# for i in range(1,6):
+#     node = Node()
+#     node.n = number[i]
+#     current.l = node
+#
+#     current = node
+#
+# current = head
+# for i in range(6):
+#     print(current.n, end = ' ')
+#     current = current.l
 
-class Node:
-    def __init__(self):
-        self.link = None
-        self.num = None
-
-def print_node():
-    print(head.num, end = ' ')
-    current = head
-    while True:
-        if current.link == None:
-            return
-        current = current.link
-        print(current.num, end = ' ')
 
 
 
 
 
-l = [i for i in range(1,46)]
-
-
-
-node = Node()
-node.num = l.pop(randint(0,len(l)-1))
-head = node
-
-
-for i in range(5):
-    node = Node()
-    node.num = l.pop(randint(0,len(l)-1))
-
-    if head.num > node.num:
-        node.link = head
-        head = node
-        continue
-
-    current = head
-    while True:
-        if current.link == None:
-            break
-        pre = current
-        current = current.link
-
-        if current.num >node.num:
-            pre.link = node
-            node.link = current
-            break
-
-    current.link = node
-
-print(head.num)
 
 
 
@@ -174,6 +164,32 @@ print(head.num)
 #
 # sort_ary()
 # parter()
+
+#정렬기본 응용예제 11-2
+# ary2 = [[55, 33, 250, 44],
+# 		 [88,  1,  67, 23],
+# 		 [199,222, 38, 47],
+# 		 [155,145, 20, 99]]
+# ary1 = []
+#
+# for i in range(4):
+#     for j in range(4):
+#         ary1.append(ary2[i][j])
+#
+# print(f'정렬 전 --> {ary1}')
+#
+# for i in range(16):
+#     for j in range(i+1, 16):
+#         if ary1[i] > ary1[j]:
+#             ary1[i], ary1[j] = ary1[j], ary1[i]
+#
+#
+# print(f'정렬 후 --> {ary1}')
+#
+# mid = ary1[16//2]
+# print(f'중앙값 --> {mid}')
+
+
 
 
 #동적 계획법 응용예제 14-2

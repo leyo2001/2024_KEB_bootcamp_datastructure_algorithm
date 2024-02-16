@@ -1,37 +1,30 @@
-from collections import deque  # for bfs
-def dfs(g, i, visited):
-    visited[i] = 1
-    print(chr(ord('A')+i), end=' ')
-    for j in range(len(g)):
-        if g[i][j] == 1 and not visited[j]:
-            dfs(g, j, visited)
+from collections import deque
+n = int(input())
+l = int(input())
 
-def bfs(g, i, visited):
-    queue = deque([i])
-    visited[i] = 1
-    while queue:
-        #print(visited)
-        i = queue.popleft()
-        print(chr(ord('A') + i), end=' ')
-        for j in range(len(g)):
-            if g[i][j] == 1 and not visited[j]:
-                queue.append(j)
-                visited[j] = 1
+g = [[0 for _ in range(n+1)] for _ in range(n+1)]
+v = [0 for _ in range(n+1)]
+
+for _ in range(l):
+    a, b = map(int, input().split())
+    g[a][b] += 1
+    g[b][a] += 1
+
+q = deque()
+q.append(1)
+v[1] = 1
+while q:
+    i = q.popleft()
+    for j in range(1,len(g)):
+        if g[i][j] == 1 and not v[j]:
+            q.append(j)
+            v[j] = 1
+
+cnt = 0
+for i in range(1,len(v)):
+    if v[i] == 1:
+        cnt += 1
+
+print(f'{cnt-1}')
 
 
-graph = [
-    [0, 1, 1, 0, 0, 0, 0, 0],
-    [1, 0, 0, 1, 0, 0, 0, 0],
-    [1, 0, 0, 1, 0, 0, 0, 0],
-    [0, 1, 1, 0, 1, 1, 1, 0],
-    [0, 0, 0, 1, 0, 1, 0, 0],
-    [0, 0, 0, 1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0, 1, 0]
-]
-
-visited_dfs = [0 for _ in range(len(graph))]
-visited_bfs = [0 for _ in range(len(graph))]
-dfs(graph, 0, visited_dfs)
-print()
-bfs(graph, 0, visited_bfs)
