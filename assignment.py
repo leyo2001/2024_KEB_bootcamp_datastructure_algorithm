@@ -176,6 +176,41 @@ print(head.num)
 # parter()
 
 
+#동적 계획법 응용예제 14-2
+# r_cnt = 0
+# dp_cnt = 0
+# def fibo(n):
+#     global r_cnt
+#     r_cnt += 1
+#     if n==0:
+#         return 0
+#     if n==1:
+#         return 1
+#
+#     return fibo(n-1) + fibo(n-2)
+#
+#
+#
+#
+# def dp_fibo(n):
+#     l = [0, 1]
+#     global  dp_cnt
+#     dp_cnt = 0
+#     for i in range(2,n+1):
+#         l.append(None)
+#         l[i] = l[i-1] + l[i-2]
+#         dp_cnt +=1
+#     return l[n]
+#
+#
+# print(fibo(30))
+# print(f'재귀 횟수 {r_cnt}')
+# print(dp_fibo(30))
+# print(f'동적 횟수 {dp_cnt}')
+
+
+
+
 
 
 
